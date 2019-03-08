@@ -8,6 +8,7 @@ class Add extends Component {
     constructor(props){
         super(props)
         this.handleSubmit = this.handleSubmit.bind(this)
+        this.handleOnChange = this.handleOnChange.bind(this)
         this.state = {
             variant: '',
             alertClass:''
@@ -23,7 +24,10 @@ class Add extends Component {
         this.setState({variant : this.state.variant + 'success'});
         this.setState({ alertClass: this.state.alertClass+ 'show'})
         }
-
+    handleOnChange(){
+        this.setState({variant : ''});
+        this.setState({ alertClass: ''})
+    }
 
     render(){
         let msg = ''
@@ -41,7 +45,7 @@ class Add extends Component {
                     onSubmit={e => this.handleSubmit(e)}>
                         <Form.Group controlId="formBasicName">
                             <Form.Label>Name</Form.Label>
-                            <Form.Control ref={input => this._newText = input} type="text" placeholder="Enter Name" />
+                            <Form.Control onChange={this.handleOnChange} ref={input => this._newText = input} type="text" placeholder="Enter Name" />
                         </Form.Group>
                         <Form.Group controlId="formBasicPhone">
                             <Form.Label>Phone</Form.Label>

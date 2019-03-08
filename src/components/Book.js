@@ -8,7 +8,6 @@ class Book extends Component{
 
     constructor(prop){
         super(prop)
-		this.deleteContact = this.deleteContact.bind(this)
 		this.eachContact = this.eachContact.bind(this)
     }
 

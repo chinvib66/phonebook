@@ -1,17 +1,19 @@
-import React from 'react';
+import React, {Component} from 'react';
 import { Button } from 'react-bootstrap'
 import {deleteContact} from '../actions/contactActions'
 import { connect } from 'react-redux';
 
-class Contact extends React.Component{
+class Contact extends Component{
     
     constructor(prop){
         super(prop)
-		this.deleteContact = this.deleteContact.bind(this)
+		this.delete = this.delete.bind(this)
     }
 
-    deleteContact(id) {
-		this.props.deleteContact(id)
+    delete(e) {
+        e.preventDefault();
+
+		this.props.deleteC(this.props.id)
 	}
     render() {
         return (
@@ -19,7 +21,7 @@ class Contact extends React.Component{
                 <td>{this.props.id}</td>
                 <td>{this.props.name}</td>
                 <td>{this.props.number}</td>
-                <td><Button onClick={this.deleteContact(this.props.id)} variant="danger">Delete</Button></td>
+                <td><Button onClick={(e)=>this.delete(e)} variant="danger">Delete</Button></td>
             </tr>
 		)
     }
@@ -28,9 +30,9 @@ class Contact extends React.Component{
 const mapDispatchToProps = (dispatch) => {
 	return {
 	// You can now say this.props.createContact
-	  deleteContact: (id) => dispatch(deleteContact(id))
+	  deleteC: (id) => dispatch(deleteContact(id))
 	}
 };
 
   // Use connect to put them together
-export default connect( mapDispatchToProps)(Contact);
+export default connect(mapDispatchToProps)(Contact);
