@@ -12,7 +12,6 @@ class Contact extends Component{
 
     delete(e) {
         e.preventDefault();
-
 		this.props.deleteC(this.props.id)
 	}
     render() {
