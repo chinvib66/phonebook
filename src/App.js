@@ -17,8 +17,8 @@ class App extends Component {
         
           <BrowserRouter>
           <Switch>
-            <Route exact path="/" component={Book}/>
-            <Route path="/add" component={Add}/>
+            <Route exact path="/phonebook" component={Book}/>
+            <Route path="/phonebook/add" component={Add}/>
           </Switch>
           </BrowserRouter>
       </div>
