@@ -31,7 +31,7 @@ class Book extends Component{
     render(){
         return(
         <Container>
-            <Link to='/add'><Button variant='success'>Add</Button></Link>
+            <Link to='/phonebook/add'><Button variant='success'>Add</Button></Link>
 
             <Table striped bordered hover>
                 <thead>

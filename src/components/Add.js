@@ -36,7 +36,7 @@ class Add extends Component {
         }
         return(
             <Container>
-                <Link to='/'><Button variant='light'>Back</Button></Link>
+                <Link to='/phonebook'><Button variant='light'>Back</Button></Link>
                 <Alert variant={this.state.variant} className={this.state.alertClass}>
                     {msg}
                 </Alert>
