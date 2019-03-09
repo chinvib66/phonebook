@@ -3,22 +3,27 @@ import { Container, Table, Button } from 'react-bootstrap'
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom'
 import Contact from './Contact'
+import {deleteContact} from '../actions/contactActions'
 
 class Book extends Component{
 
-    constructor(prop){
-        super(prop)
-		this.eachContact = this.eachContact.bind(this)
+    constructor(props){
+        super(props)
+    this.eachContact = this.eachContact.bind(this)
+    this.delete = this.delete.bind(this)
     }
 
-    
+    delete = (id)=> {
+      this.props.deleteContact(id)
+    }  
 
     eachContact(contact, i) {
 		return (
 			<Contact key={contact.id}
 				  id={contact.id}
 				  name={contact.name}
-				  number={contact.number}>
+				  number={contact.number}
+          onDel={()=>this.delete(contact.id)}>
 		    </Contact>
 		)
 	}
@@ -56,5 +61,13 @@ const mapStateToProps = (state, ownProps) => {
 	}
 };
 
+const mapDispatchToProps = (dispatch) => {
+	return {
+	// You can now say this.props.createContact
+	  deleteContact: (id) => dispatch(deleteContact(id))
+	}
+};
+
   // Use connect to put them together
-export default connect(mapStateToProps)(Book);
+  // Use connect to put them together
+export default connect(mapStateToProps, mapDispatchToProps)(Book);
